@@ -17,11 +17,13 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.post('/generate-pdf', async (req, res) => {
+  // Datos recibidos en el body de la petición
   const { ordenSalida, ordenEntrega, nombre, fecha, series, articulos } = req.body;
 
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
 
+  // Renderiza 'index.ejs' con los datos recibidos
   const content = await ejs.renderFile(path.join(__dirname, 'views', 'index.ejs'), {
     ordenSalida,
     ordenEntrega,
@@ -37,16 +39,11 @@ app.post('/generate-pdf', async (req, res) => {
 
   await browser.close();
 
+  // Genera un nombre de archivo único usando una marca de tiempo
   const timestamp = new Date().getTime(); // Obtiene la marca de tiempo actual
   res.setHeader('Content-Type', 'application/pdf');
   res.setHeader('Content-Disposition', `attachment; filename=invoice-${timestamp}.pdf`);
   res.send(pdf);
-});
-
-// Añadido para escuchar en el puerto que Vercel asigna a través de la variable de entorno PORT
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
 });
 
 module.exports = app;
