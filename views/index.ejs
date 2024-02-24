@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="http://localhost:3000/stylesheets/style.css">
+</head>
+<body>
+  <div class="header">
+    <div class="logo">
+      <img src="http://localhost:3000/images/harris.jpeg" alt="Logo">
+    </div>
+    <div class="order-info">
+      <p>ORDEN SALIDA</p> <br>
+      <p><%= ordenSalida %></p>
+    </div>
+    <div class="order-info">
+      <p>ORDEN ENTREGA</p> <br>
+      <p><%= ordenEntrega %></p>
+    </div>
+  </div> <br>
+
+<div class="client-info">
+  <span>Cliente: <%= nombre %></span>
+  <span>Fecha: <%= fecha %></span>
+</div> <br>
+
+<img src="http://localhost:3000/images/img.jpg" class="full-width-image">
+
+  <table class="custom-table">
+    <thead>
+    <tr>
+      <th>Clave</th>
+      <th>Descripción</th>
+      <th>Uni.</th>
+      <th>Cant.</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% articulos.forEach(function(articulo) { %>
+      <tr>
+        <td><%= articulo.clave %></td>
+        <td>REGISTRO ALUMBRADO PUBLICO GALVANIZADO DE CONCRETO 33X33X40 CMS</td>
+        <td>PZA</td>
+        <td><%= articulo.cantidad %></td>
+      </tr>
+    <% }); %>
+    </tbody>
+  </table>
+
+<div class="table-container">
+  <table class="series-table">
+    <thead>
+    <tr>
+      <th>SERIES ENTREGADAS</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% series.forEach(function(serie) { %>
+      <tr>
+        <td><%= serie %></td>
+      </tr>
+    <% }); %>
+    </tbody>
+  </table>
+</div>
+
+<div class="important-notice">
+  <p>ESTA ORDEN DE SALIDA DE ALMACEN SE DEBERA PRESENTAR EN ORIGINAL EN LA PLANTA CORRESPONDIENTE. PARA LA RECEPCION DEL PRODUCTO.</p>
+  <p>LA PERSONA QUIEN ENTREGUE ESTE DOCUMENTO CUENTA CON LA AUTORIZACION PLENA DE LA EMPRESA COMPRADORA PARA RETIRARLO. ESTA ORDEN DE SALIDA DE ALMACEN SE COMPLEMENTA CON LA ORDEN DE ENTREGA DE PRODUCTO.</p>
+  <p>ESTA ORDEN DE SALIDA TIENE UNA VIGENCIA DE 30 DIAS PARA RETIRAR SUS PRODUCTOS. EN CASO CONTRARIO CAUSARA UN IMPORTE POR ALMACENAJE DE 25 PESOS DIARIOS POR CADA PIEZA EN RESGUARDO. NO NOS HACEMOS RESPONSABLES POR PRODUCTOS QUE NO SEAN RECOLECTADOS EN EL TIEMPO ACORDADO.</p>
+  <p>AL REALIZAR SU PAGO. LE AGRADECEREMOS ENVIE EVIDENCIA AL SIGUIENTE CORREO. <a href="mailto:tesoreria@herrozinc.com">tesoreria@herrozinc.com</a> PARA HACER OPORTUNAMENTE EL DESCUENTO DEL SALDO A SU CARGO.</p>
+  <p>Verifique bien calidad en todos sus productos, no acepte si no están en buenas condiciones, evitemos problemas posteriores.</p>
+</div>
+</body>
+</html>
