@@ -91,3 +91,13 @@ body {
   font-size: 12px;
   line-height: 1.6;
 }
+
+.operator-info {
+  text-align: center; /* Centrar el contenido */
+  margin-top: 40px; /* Añadir un poco de margen arriba */
+}
+
+.operator-info span {
+  display: inline-block; /* Hace que los span estén en la misma línea */
+  margin-right: 30px; /* Añadir un poco de espacio entre los span */
+}

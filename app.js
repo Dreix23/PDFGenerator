@@ -18,7 +18,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.post('/generate-pdf', async (req, res) => {
   // Datos recibidos en el body de la petición
-  const { ordenSalida, ordenEntrega, nombre, fecha, series, articulos } = req.body;
+  const { ordenSalida, ordenEntrega, nombre, fecha, series, articulos, nombreRegistrador, nombreOperador } = req.body;
 
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
@@ -30,7 +30,9 @@ app.post('/generate-pdf', async (req, res) => {
     nombre, // Nombre del cliente
     fecha,
     series, // Lista de series
-    articulos // Lista de artículos con clave y cantidad
+    articulos, // Lista de artículos con clave y cantidad
+    nombreRegistrador,
+    nombreOperador
   });
 
   await page.setContent(content, { waitUntil: 'networkidle0' });
